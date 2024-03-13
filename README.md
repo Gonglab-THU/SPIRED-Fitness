@@ -29,7 +29,7 @@ pip install biopython
 
 ## Usage
 
-* You should download the [model parameters](https://zenodo.org/records/10589086) and move it into the `model` folder
+* You should download the [model parameters](https://zenodo.org/doi/10.5281/zenodo.10589085) and move it into the `model` folder
 
 ```bash
 # run SPIRED-Fitness
