@@ -19,10 +19,10 @@ conda create -n spired_fitness python=3.11
 conda activate spired_fitness
 
 conda install pytorch cpuonly -c pytorch
-pip install click
-pip install einops
-pip install pandas
-pip install biopython
+pip install click==8.1.7
+pip install einops==0.7.0
+pip install pandas==2.1.4
+pip install biopython==1.82
 ```
 
 4. Follow the steps below to install [GDFold2](https://github.com/Gonglab-THU/GDFold2) or run the command `conda env create -f environment/gdfold2.yml`
@@ -34,7 +34,7 @@ conda create -n gdfold2 python=3.11
 conda activate gdfold2
 
 conda install pytorch pytorch-cuda=11.8 -c pytorch -c nvidia
-pip install biopython
+pip install biopython==1.82
 ```
 
 ## Usage

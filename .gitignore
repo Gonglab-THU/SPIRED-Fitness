@@ -1,2 +1,3 @@
 **/__pycache__
-model/*
+model/SPIRED-Fitness.pth
+model/SPIRED-Stab.pth
