@@ -22,10 +22,10 @@ export SPIRED_DIR=$(dirname $(realpath $0))
 
 help() {
     echo -e "Usage:\n"
-    echo -e "bash run_spired_fitness.sh [-i INPUT] [-o FOLDER]\n"
+    echo -e "bash run_spired.sh [-i INPUT] [-o FOLDER]\n"
     echo -e "Description:\n"
-    echo -e " \e[1;31m-i\e[0m input the fasta file (e.g. -i ./example_fitness/test.fasta)"
-    echo -e " \e[1;31m-o\e[0m output folder (e.g. -o example_fitness)"
+    echo -e " \e[1;31m-i\e[0m input the fasta file (e.g. -i ./example_spired/test.fasta)"
+    echo -e " \e[1;31m-o\e[0m output folder (e.g. -o example_spired)"
     echo -e "\e[1;31mAll parameters must be set!\e[0m"
     exit 1
 }
@@ -52,15 +52,15 @@ done
 shift "$(($OPTIND - 1))"
 
 #######################################################################
-# run SPIRED-Fitness
+# run SPIRED
 #######################################################################
 
 echo -e "Input fasta file: \e[1;31m${input}\e[0m"
 echo -e "Output folder: \e[1;31m${folder}\e[0m"
 
-# predict Cα protein structure and fitness csv
+# predict Cα protein structure
 conda activate spired_fitness
-python ${SPIRED_DIR}/run_SPIRED-Fitness.py --fasta_file ${input} --saved_folder ${folder}
+python ${SPIRED_DIR}/run_SPIRED.py --fasta_file ${input} --saved_folder ${folder}
 
 # predict full-atom protein structure by GDFold2
 conda activate gdfold2

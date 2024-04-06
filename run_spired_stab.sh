@@ -64,5 +64,5 @@ python ${SPIRED_DIR}/run_SPIRED-Stab.py --fasta_file ${input} --saved_folder ${f
 
 # predict full-atom protein structure by GDFold2
 conda activate gdfold2
-python ${SPIRED_DIR}/scripts/GDFold2/fold.py ${input} ${folder} -d cuda:6
+python ${SPIRED_DIR}/scripts/GDFold2/fold.py ${input} ${folder} -d cuda:0
 python ${SPIRED_DIR}/scripts/GDFold2/relax.py --input ${input} --output ${folder}
