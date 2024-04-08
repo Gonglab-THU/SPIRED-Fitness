@@ -1,7 +1,7 @@
 <h1 align="center">SPIRED-Fitness</h1>
 <p align="center">An end-to-end framework for the prediction of protein structure and fitness from single sequence</p>
 
-## Install software on Linux
+## Install software on Linux (Conda)
 
 1. Download `SPIRED-Fitness`
 
@@ -37,9 +37,32 @@ conda install pytorch pytorch-cuda=11.8 -c pytorch -c nvidia
 pip install biopython==1.82
 ```
 
+## Install software on Linux (Docker)
+
+1. Download `SPIRED-Fitness`
+
+```bash
+git clone https://github.com/Gonglab-THU/SPIRED-Fitness.git
+cd SPIRED-Fitness
+```
+
+2. Build Docker image from Dockerfile
+
+```bash
+docker build -t spired -f ./environment/Dockerfile .
+```
+
+3. Start Docker container from the image for the first time
+
+**Note**: Please ensure that the container has a minimum of 50 GB of memory to run the models. Also, remember to adjust the Docker memory setting accordingly.
+
+```bash
+docker run -it --name=spired --memory=50g spired /bin/bash
+```
+
 ## Usage
 
-* You should download the [model parameters](https://zenodo.org/doi/10.5281/zenodo.10589085) and move it into the `model` folder
+- You should download the [model parameters](https://zenodo.org/doi/10.5281/zenodo.10589085) and move it into the `model` folder. If you install from docker, then the model parameters have been pre-downloaded.
 
 ```bash
 # run SPIRED
