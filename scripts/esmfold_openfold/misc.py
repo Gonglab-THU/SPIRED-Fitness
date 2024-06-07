@@ -9,6 +9,7 @@ import torch.nn.functional as F
 from torch import nn
 from einops import rearrange, repeat
 
+
 def batch_encode_sequences(
     sequences: T.Sequence[str],
     residue_index_offset: T.Optional[int] = 512,
@@ -31,18 +32,15 @@ def batch_encode_sequences(
         chain_index_list.append(chain_index_seq)
 
     aatype = collate_dense_tensors(aatype_list)
-    mask = collate_dense_tensors(
-        [aatype.new_ones(len(aatype_seq)) for aatype_seq in aatype_list]
-    )
+    mask = collate_dense_tensors([aatype.new_ones(len(aatype_seq)) for aatype_seq in aatype_list])
     residx = collate_dense_tensors(residx_list)
     linker_mask = collate_dense_tensors(linker_mask_list)
     chain_index_list = collate_dense_tensors(chain_index_list, -1)
 
     return aatype, mask, residx, linker_mask, chain_index_list
 
-def collate_dense_tensors(
-    samples: T.List[torch.Tensor], pad_v: float = 0
-) -> torch.Tensor:
+
+def collate_dense_tensors(samples: T.List[torch.Tensor], pad_v: float = 0) -> torch.Tensor:
     """
     Takes a list of tensors with the following dimensions:
         [(d_11,       ...,           d_1K),
@@ -55,14 +53,10 @@ def collate_dense_tensors(
     if len(samples) == 0:
         return torch.Tensor()
     if len(set(x.dim() for x in samples)) != 1:
-        raise RuntimeError(
-            f"Samples has varying dimensions: {[x.dim() for x in samples]}"
-        )
+        raise RuntimeError(f"Samples has varying dimensions: {[x.dim() for x in samples]}")
     (device,) = tuple(set(x.device for x in samples))  # assumes all on same device
     max_shape = [max(lst) for lst in zip(*[x.shape for x in samples])]
-    result = torch.empty(
-        len(samples), *max_shape, dtype=samples[0].dtype, device=device
-    )
+    result = torch.empty(len(samples), *max_shape, dtype=samples[0].dtype, device=device)
     result.fill_(pad_v)
     for i in range(len(samples)):
         result_i = result[i]
@@ -118,9 +112,7 @@ class Attention(nn.Module):
 
         # Do not attend to padding tokens.
         if mask is not None:
-            mask = repeat(
-                mask, "... lk -> ... h lq lk", h=self.num_heads, lq=q.shape[-2]
-            )
+            mask = repeat(mask, "... lk -> ... h lq lk", h=self.num_heads, lq=q.shape[-2])
             a = a.masked_fill(mask == False, -np.inf)
 
         a = F.softmax(a, dim=-1)

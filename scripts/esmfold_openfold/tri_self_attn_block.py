@@ -47,14 +47,10 @@ class TriangularSelfAttentionBlock(nn.Module):
 
         self.layernorm_1 = nn.LayerNorm(sequence_state_dim)
 
-        self.sequence_to_pair = SequenceToPair(
-            sequence_state_dim, pairwise_state_dim // 2, pairwise_state_dim
-        )
+        self.sequence_to_pair = SequenceToPair(sequence_state_dim, pairwise_state_dim // 2, pairwise_state_dim)
         self.pair_to_sequence = PairToSequence(pairwise_state_dim, sequence_num_heads)
 
-        self.seq_attention = Attention(
-            sequence_state_dim, sequence_num_heads, sequence_head_width, gated=True
-        )
+        self.seq_attention = Attention(sequence_state_dim, sequence_num_heads, sequence_head_width, gated=True)
         self.tri_mul_out = TriangleMultiplicationOutgoing(
             pairwise_state_dim,
             pairwise_state_dim,
@@ -141,18 +137,10 @@ class TriangularSelfAttentionBlock(nn.Module):
 
         # Axial attention with triangular bias.
         tri_mask = mask.unsqueeze(2) * mask.unsqueeze(1) if mask is not None else None
-        pairwise_state = pairwise_state + self.row_drop(
-            self.tri_mul_out(pairwise_state, mask=tri_mask)
-        )
-        pairwise_state = pairwise_state + self.col_drop(
-            self.tri_mul_in(pairwise_state, mask=tri_mask)
-        )
-        pairwise_state = pairwise_state + self.row_drop(
-            self.tri_att_start(pairwise_state, mask=tri_mask, chunk_size=chunk_size)
-        )
-        pairwise_state = pairwise_state + self.col_drop(
-            self.tri_att_end(pairwise_state, mask=tri_mask, chunk_size=chunk_size)
-        )
+        pairwise_state = pairwise_state + self.row_drop(self.tri_mul_out(pairwise_state, mask=tri_mask))
+        pairwise_state = pairwise_state + self.col_drop(self.tri_mul_in(pairwise_state, mask=tri_mask))
+        pairwise_state = pairwise_state + self.row_drop(self.tri_att_start(pairwise_state, mask=tri_mask, chunk_size=chunk_size))
+        pairwise_state = pairwise_state + self.col_drop(self.tri_att_end(pairwise_state, mask=tri_mask, chunk_size=chunk_size))
 
         # MLP over pairs.
         pairwise_state = self.mlp_pair(pairwise_state)
