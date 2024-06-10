@@ -153,7 +153,7 @@ union_model.load_state_dict(union_model_state_dict)
 #     print(name, param.requires_grad)
 
 ## Load ESM-2 model
-esm_model_path = "/export/disk4/chenyinghui/database/Evolutionary_Scale_Modeling/esm2_t36_3B_UR50D.pt"
+esm_model_path = "esm2/esm2_t36_3B_UR50D.pt"
 esm2_3B_CPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 esm2_3B_GPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 batch_converter_esm2 = alphabet_esm2.get_batch_converter()

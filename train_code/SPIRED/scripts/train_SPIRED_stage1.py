@@ -113,7 +113,7 @@ SPIRED_Model = SPIRED_Model(depth=2, channel=128, device_list=device_list_SPIRED
 SPIRED_Model = load_model_parameters(SPIRED_Model, FLAGS.SPIRED_saved_model)
 
 ## Load ESM-2 model
-esm_model_path = "/export/disk4/chenyinghui/database/Evolutionary_Scale_Modeling/esm2_t36_3B_UR50D.pt"
+esm_model_path = "esm2/esm2_t36_3B_UR50D.pt"
 esm2_CPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 esm2_GPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 batch_converter_esm2 = alphabet_esm2.get_batch_converter()

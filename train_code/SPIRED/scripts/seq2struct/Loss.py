@@ -58,8 +58,6 @@ def getLDDT(predcadist, truecadist):
 
     """
 
-    jupyter notebook: /export/disk4/xyg/mixnet/analysis.ipynb
-
     D: true distance
     d: predicted distance
 

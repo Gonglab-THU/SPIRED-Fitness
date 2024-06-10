@@ -18,7 +18,7 @@ SPIRED_model="./data/stage2/SPIRED.pth" # checkpoint of SPIRED model
 Fitness_checkpoint="./data/stage2/Fitness.pth" # checkpoint of Fitness model from stage1 training
 
 mkdir -p $outdir
-CUDA_VISIBLE_DEVICES=1 python -u /export/disk5/chenyinghui/SPIRED-Fitness_union/SPIRED-Fitness_doubleMut_h5/train_SPIRED_fitness_PDBmix.py \
+CUDA_VISIBLE_DEVICES=0 python -u scripts_stage2/train_SPIRED_fitness_PDBmix.py \
 	    --SPIRED_checkpoint $SPIRED_model --Fitness_checkpoint $Fitness_checkpoint \
 		--ESM_length_cutoff 800 \
 		--lr 0.0001 \

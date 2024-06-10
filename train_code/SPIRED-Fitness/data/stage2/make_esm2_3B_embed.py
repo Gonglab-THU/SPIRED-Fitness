@@ -86,7 +86,7 @@ def ESM2_embed(seq_tokens, model_CPU, model_GPU, length_cutoff, gpu):
 
 # ESM2-3B
 device_list_esm = ["cuda:" + str(gpu) for gpu in FLAGS.gpu_esm]
-esm_model_path = "/export/disk4/chenyinghui/database/Evolutionary_Scale_Modeling/esm2_t36_3B_UR50D.pt"
+esm_model_path = "esm2/esm2_t36_3B_UR50D.pt"
 esm2_CPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 esm2_GPU, alphabet_esm2 = esm.pretrained.load_model_and_alphabet(esm_model_path)
 batch_converter_esm2 = alphabet_esm2.get_batch_converter()
