@@ -24,7 +24,7 @@ This repository contains scripts and data paths required for training a deep lea
 ### Input Data
 - **File Path**: `./data/stage2`
   - **epoch_train_samples_1483**: Sample lists for each epoch, consisting of 1,000 samples from SPIRED training and 482 samples from fitness training (stage 1).
-  - **Note**: Input files required by `train_stage2.sh` (except for `esm2_3B_h5` and `fitness_data_h5`) can be downloaded from Zenodo at [this link](https://doi.org/10.5281/zenodo.10589085).
+  - **Note**: Input files required by `train_stage2.sh` (except for `esm2_3B_h5` and `fitness_data_h5`) can be downloaded from Zenodo at [this link](https://doi.org/10.5281/zenodo.12560925).
 
 ### Learning Rate
 - **SPIRED Module**: The learning rate is fixed at 1e-5.
