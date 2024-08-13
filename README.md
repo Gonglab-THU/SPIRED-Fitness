@@ -1,6 +1,8 @@
 <h1 align="center">SPIRED-Fitness</h1>
 <p align="center">An end-to-end framework for the prediction of protein structure and fitness from single sequence</p>
 
+![SPIRED-Fitness](figures/SPIRED-Fitness.svg)
+
 ## Install software on Linux (Conda)
 
 1. Download `SPIRED-Fitness`
