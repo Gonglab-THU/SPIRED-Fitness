@@ -79,4 +79,4 @@ bash run_spired_stab.sh -i example_stab/test.fasta -o example_stab
 
 ## Reference
 
-[SPIRED-Fitness: an end-to-end framework for the prediction of protein structure and fitness from single sequence](https://doi.org/10.1101/2024.01.31.578102)
+[An end-to-end framework for the prediction of protein structure and fitness from single sequence](https://doi.org/10.1038/s41467-024-51776-x)
