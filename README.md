@@ -64,7 +64,7 @@ docker run -it --name=spired --memory=50g spired /bin/bash
 
 ## Usage
 
-- You should download the [model parameters](https://zenodo.org/doi/10.5281/zenodo.12560925) and move it into the `model` folder. If you install from docker, then the model parameters have been pre-downloaded.
+- You should download the [model parameters](https://doi.org/10.5281/zenodo.12560925) and move it into the `model` folder. If you install from docker, then the model parameters have been pre-downloaded.
 
 ```bash
 # run SPIRED
